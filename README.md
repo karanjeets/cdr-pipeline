@@ -1,7 +1,7 @@
 # CDR Pipeline
 Place where Nutch segments are extracted followed by post crawl analysis
 
----
+--
 
 ### Scripts from external sources
 #### Extraction Scripts
