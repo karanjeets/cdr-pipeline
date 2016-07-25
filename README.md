@@ -1,8 +1,6 @@
 # CDR Pipeline
 Place where Nutch segments are extracted followed by post crawl analysis
 
---
-
 ## Process
 A detailed outline of CDR pipeline. You may find some of the steps redundant and it definitely needs improvement. It is a part of learning.
 This pipeline was tested for Domain Discovery Eval project wherein we had 12 different types of crawls running and all needs to be dumped and merged into a single file in CDRv2 format.
