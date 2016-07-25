@@ -2,30 +2,26 @@
 
 # Program to compute hash of the content, map it with the URL and store it in a file as a key value pair.
 # Also, this program save each json document in a separate file.
+# Image documents = result_file.images
+# Document with Id - Hash = result_file.txt
+# Id and json filename = prefix + number + '.json'
 
 import sys
 import argparse
 import datetime
-import gzip as gz
 import simplejson
 import hashlib
 import unicodedata
 
 
 def write_doc(doc, result_file):
-    '''
-    Takes in CDR document and writes it
-    into the result file
-    '''
-
-    # write output
     with open(result_file, 'ab') as out:
         out.write(simplejson.dumps(doc) + '\n')
 
 
 def write_json(jdoc, result_file):
     with open(result_file, 'wb') as out:
-        out.write(simplejson.dumps(jdoc) + '\n')
+        out.write(simplejson.dumps(jdoc))
 
 
 def write_hash(line, result_file):
@@ -170,7 +166,6 @@ def main(argv):
             else:
                 # write output
                 write_doc(doc, result_file + ".images")
-        fp.close()
 
     deduped_count = len(unique_set)
     total_dupes = input_count - deduped_count

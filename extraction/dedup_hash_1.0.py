@@ -42,7 +42,7 @@ def main(argv):
             if hash not in unique_set:
                 unique_set.add(hash)
 
-                with open(result_file, 'wb') as out:
+                with open(result_file, 'ab') as out:
                     out.write(filename + "\n")
 
 

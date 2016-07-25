@@ -17,7 +17,7 @@ def main(argv):
         epilog=desc)
 
     parser.add_argument("--input_file", help="path to the input file")
-    parser.add_argument("--result_file", help="path to the deduped output file")
+    parser.add_argument("--result_file", help="path to the merged output file")
 
     args = parser.parse_args()
 
@@ -34,13 +34,17 @@ def main(argv):
             filename = line.strip()
             print "Processing ", filename
             with open(filename, 'rb') as jfile:
-                docs.append(jfile.read())
+                doc = jfile.read().strip()
+
+            if not doc:
+                continue
+            else:
+                docs.append(doc)
 
             if iter % 1000 == 0:
                 with gzip.open(result_file, 'a') as out:
-                    out.write("\n".join(docs))
+                    out.write("\n".join(docs) + "\n")
                 docs = []
-                exit()
 
     print "\nProcessed ", iter, " documents"
 
